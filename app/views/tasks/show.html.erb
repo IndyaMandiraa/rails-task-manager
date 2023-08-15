@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-12 p-5">
+    <div class="w-50 mt-3 ml-0 mr-0 mx-auto">
+      <div class="d-flex">
+        <h3 class="p-3"><%= @task.title %></h3>
+        <%= link_to "Edit this task", edit_task_path(@task.id) %>
+      </div>
+
+      <p class="alert alert-primary"><%= @task.details %><p>
+
+      <% if @task.completed == true %>
+        <p>Your task is completed!</p>
+      <% elsif @task.completed == false %>
+        <p>Your task has not been completed!</p>
+      <% end %>
+
+      <%= link_to "Back to list", tasks_path %>
+      <%= link_to "Delete",
+          task_path(@task),
+          data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+          %>
+
+    </div>
+  </div>
+</div>
